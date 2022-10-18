@@ -28,8 +28,6 @@ const addCgpa = async (req, res) => {
     console.log(student);
     delete req.body.percentage;
     console.log(req.body)
-    const resp = await studentRepo.save(student);
-    console.log(resp);
     
     const value1 = await gradeRepo.findOne({
       select:{
@@ -41,6 +39,8 @@ const addCgpa = async (req, res) => {
       }
     });
     console.log(value1);
+    const resp = await studentRepo.save(student);
+    console.log(resp);
     
 
     if(value1.grade < "D")
